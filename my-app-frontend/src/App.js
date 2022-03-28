@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+// import { Switch, Route, Link } from "react-router-dom";
+// import React from "react";
+
 
 function App() {
   return (
     <div className="App">
+      {/* <Switch> */}
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Mental Health <br/> Without Borders</h1>
+        
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <button type="button" className="btn-1">In need of help<br/>Register</button>
+          <button type="button" className="btn-2">Would like to help<br/>Register</button>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button type="button" className="log-btn">
+          Login
+        </button>
+      
+      {/* </Switch> */}
       </header>
+      <div className="body-1">Data Goes Here</div>
     </div>
   );
 }
