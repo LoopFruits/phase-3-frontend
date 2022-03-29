@@ -1,12 +1,15 @@
 import React from 'react';
 
 function Patient() {
+// const [form, setForm] = useState([]);
 
+//   function handleSubmit() {
+  
+// }
 return (
     <div className="body-1">
     <h1>Patient Sign-up</h1>
     <form>
-      <fieldset>
         <label>
           <p>First Name</p>
           <input firstName="firstName" />
@@ -19,8 +22,15 @@ return (
           <p>State ID</p>
           <input stateId="stateId" />
         </label>
-      </fieldset>
-      <button type="submit">Submit</button>
+        <label>
+          <p>User Name</p>
+          <input userName="userName" />
+        </label>
+        <label>
+          <p>Password</p>
+          <input password="password" />
+        </label>
+      <button type="submit" >Submit</button>
     </form>
   </div>
 )

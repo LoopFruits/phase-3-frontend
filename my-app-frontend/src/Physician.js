@@ -4,7 +4,6 @@ function Physician() {
         <div className="body-1">
     <h1>Physician Sign-up</h1>
     <form>
-      <fieldset>
         <label>
           <p>First Name</p>
           <input firstName="firstName" />
@@ -21,7 +20,14 @@ function Physician() {
           <p>Medical License</p>
           <input medicalLicense="medicalLicense" />
         </label>
-      </fieldset>
+        <label>
+          <p>User Name</p>
+          <input userName="userName" />
+        </label>
+        <label>
+          <p>Password</p>
+          <input password="password" />
+        </label>
       <button type="submit">Submit</button>
     </form>
   </div>

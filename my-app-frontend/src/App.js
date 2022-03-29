@@ -1,49 +1,61 @@
 import './App.css';
-// import { Switch, Route, Link } from "react-router-dom";
-import React, { useState } from "react";
+import { Switch, Route, Link } from "react-router-dom";
+import React from "react";
 import Patient from "./Patient";
 import Physician from "./Physician";
 import Login from "./Login";
+import Donate from "./Donate";
+import CreateLog from './CreateLog';
 function App() {
-  const [isClick1, setIsClick1] = useState(false);
-  const [isClick2, setIsClick2] = useState(false);
-  const [isClick3, setIsClick3] = useState(false);
+  // const [isClick1, setIsClick1] = useState(false);
+  // const [isClick2, setIsClick2] = useState(false);
+  // const [isClick3, setIsClick3] = useState(false);
   
   
-  function patientForm() {
-    setIsClick1(!isClick1)
-  }
+  // function patientForm() {
+  //   setIsClick1(!isClick1)
+  // }
 
-  function physicianForm() {
-    setIsClick2(!isClick2)
-  }
+  // function physicianForm() {
+  //   setIsClick2(!isClick2)
+  // }
 
-  function loginForm() {
-    setIsClick3(!isClick3)
-  }
+  // function loginForm() {
+  //   setIsClick3(!isClick3)
+  // }
 
   return (
     <div className="App">
-      {/* <Switch> */}
+      <Switch>
       <header className="App-header">
-        <h1>Mental Health <br/> Without Borders</h1>
-        
-        <p>
-          <button type="button" className="btn-1" onClick={patientForm}>In need of help<br/>Register</button>
-          <button type="button" className="btn-2" onClick={physicianForm}>Would like to help<br/>Register</button>
-        </p>
-        <button type="button" className="log-btn" onClick={loginForm}>
-          Login
-        </button>
       
-      {/* </Switch> */}
+        <h1>Mental Health <br/> Without Borders</h1>
+        <Link to="/donate"><button type="button" className="don-btn" >DONATE</button></Link>
+        <Link to="/register"><button type="button" className="btn-1">Patient <br/>Registration</button></Link>
+        <Link to="/register"><button type="button" className="btn-2">Physician <br/>Registration</button></Link>
+        <Link to="/login"><button type="button" className="log-btn" >Login</button></Link>
+        <p>
+        <Route exact path="/donate">
+            <Donate/>
+        </Route>
+        <Route exact path="/register">
+          <CreateLog/>
+        </Route>
+        <Route exact path="/patient">
+            <Patient/>
+        </Route>
+        <Route exact path="/physician">
+            <Physician/>
+        </Route>
+        </p>
+        <Route exact path="/login">
+            <Login/>
+        </Route>
       </header>
-      <div className="body-1">
-       {isClick1 ? <Patient/> : null}
-       {isClick2 ? <Physician/> : null}
-       {isClick3 ? <Login/> : null}
+      </Switch>
+        <div className="body-1">
+        </div>
       </div>
-    </div>
   );
 }
 
