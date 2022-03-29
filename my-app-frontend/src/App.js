@@ -1,6 +1,6 @@
 import './App.css';
 // import { Switch, Route, Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Patient from "./Patient";
 import Physician from "./Physician";
 import Login from "./Login";
@@ -9,6 +9,13 @@ function App() {
   const [isClick2, setIsClick2] = useState(false);
   const [isClick3, setIsClick3] = useState(false);
   
+  const [appointments, setAppointments] = useState({})
+
+  // useEffect(() => {
+  //   fetch("http://localhost:9293/")
+  //     .then((r) => r.json())
+  //     .then((appointments) => console.log(appointments));
+  // }, []);
   
   function patientForm() {
     setIsClick1(!isClick1)
@@ -43,6 +50,9 @@ function App() {
        {isClick2 ? <Physician/> : null}
        {isClick3 ? <Login/> : null}
       </div>
+      <section>
+
+      </section>
     </div>
   );
 }
