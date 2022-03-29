@@ -20,14 +20,6 @@ function Physician() {
           <p>Medical License</p>
           <input medicalLicense="medicalLicense" />
         </label>
-        <label>
-          <p>User Name</p>
-          <input userName="userName" />
-        </label>
-        <label>
-          <p>Password</p>
-          <input password="password" />
-        </label>
       <button type="submit">Submit</button>
     </form>
   </div>

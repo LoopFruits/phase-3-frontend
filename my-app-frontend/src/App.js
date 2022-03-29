@@ -5,7 +5,8 @@ import Patient from "./Patient";
 import Physician from "./Physician";
 import Login from "./Login";
 import Donate from "./Donate";
-import CreateLog from './CreateLog';
+import CreatePatientLog from './CreatePatientLog';
+import CreatePhysicianLog from "./CreatePhysicianLog";
 function App() {
   // const [isClick1, setIsClick1] = useState(false);
   // const [isClick2, setIsClick2] = useState(false);
@@ -31,15 +32,18 @@ function App() {
       
         <h1>Mental Health <br/> Without Borders</h1>
         <Link to="/donate"><button type="button" className="don-btn" >DONATE</button></Link>
-        <Link to="/register"><button type="button" className="btn-1">Patient <br/>Registration</button></Link>
-        <Link to="/register"><button type="button" className="btn-2">Physician <br/>Registration</button></Link>
+        <Link to="/registerPatient"><button type="button" className="btn-1">Patient <br/>Registration</button></Link>
+        <Link to="/registerPhysician"><button type="button" className="btn-2">Physician <br/>Registration</button></Link>
         <Link to="/login"><button type="button" className="log-btn" >Login</button></Link>
         <p>
         <Route exact path="/donate">
             <Donate/>
         </Route>
-        <Route exact path="/register">
-          <CreateLog/>
+        <Route exact path="/registerPatient">
+          <CreatePatientLog/>
+        </Route>
+        <Route exact path="/registerPhysician">
+          <CreatePhysicianLog/>
         </Route>
         <Route exact path="/patient">
             <Patient/>

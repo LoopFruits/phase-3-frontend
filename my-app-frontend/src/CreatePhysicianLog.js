@@ -1,11 +1,10 @@
 import React from 'react';
 
-
-function CreateLog() {
+function CreatePhysicianLog() {
 
     return (
         <div className="body-1">
-        <h1>Register</h1>
+        <h1>Register Physician</h1>
         <form>
           <div>
             <input type="text" name="username" placeholder="Username" />
@@ -13,12 +12,11 @@ function CreateLog() {
           <div>
             <input type="password" name="password" placeholder="Password" />
           </div>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Create Account" />
         </form>
       </div>
     )
-
-
 }
 
-export default CreateLog;
+
+export default CreatePhysicianLog;
