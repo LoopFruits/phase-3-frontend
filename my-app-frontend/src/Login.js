@@ -13,7 +13,7 @@ function Login() {
           <div>
             <input type="password" name="password" placeholder="Password" />
           </div>
-          <input type="submit" value="Enter" />
+          <button type="submit"  className="sub-btn">Enter</button>
         </form>
       </div>
     )

@@ -5,8 +5,11 @@ import Patient from "./Patient";
 import Physician from "./Physician";
 import Login from "./Login";
 import Donate from "./Donate";
-import CreatePatientLog from './CreatePatientLog';
-import CreatePhysicianLog from "./CreatePhysicianLog";
+// import CreatePatientLog from './CreatePatientLog';
+// import CreatePhysicianLog from "./CreatePhysicianLog";
+import EditPatient from "./EditPatient"
+import PatientLanding from "./PatientLanding";
+
 function App() {
   // const [isClick1, setIsClick1] = useState(false);
   // const [isClick2, setIsClick2] = useState(false);
@@ -32,18 +35,15 @@ function App() {
       
         <h1>Mental Health <br/> Without Borders</h1>
         <Link to="/donate"><button type="button" className="don-btn" >DONATE</button></Link>
-        <Link to="/registerPatient"><button type="button" className="btn-1">Patient <br/>Registration</button></Link>
-        <Link to="/registerPhysician"><button type="button" className="btn-2">Physician <br/>Registration</button></Link>
+        <Link to="/Patient"><button type="button" className="btn-1">Patient <br/>Registration</button></Link>
+        <Link to="/Physician"><button type="button" className="btn-2">Physician <br/>Registration</button></Link>
         <Link to="/login"><button type="button" className="log-btn" >Login</button></Link>
         <p>
         <Route exact path="/donate">
             <Donate/>
         </Route>
-        <Route exact path="/registerPatient">
-          <CreatePatientLog/>
-        </Route>
-        <Route exact path="/registerPhysician">
-          <CreatePhysicianLog/>
+        <Route exact path="/edit-patient">
+          <EditPatient/>
         </Route>
         <Route exact path="/patient">
             <Patient/>
@@ -52,8 +52,11 @@ function App() {
             <Physician/>
         </Route>
         </p>
-        <Route exact path="/login">
+        <Route path="/login">
             <Login/>
+        </Route>
+        <Route path="/patient-landing">
+          <PatientLanding/>
         </Route>
       </header>
       </Switch>

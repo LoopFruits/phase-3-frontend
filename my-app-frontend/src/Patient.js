@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Patient() {
 
@@ -9,6 +10,8 @@ function Patient() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [idNumber, setIdNumber] = useState("")
+
+    const history = useHistory();
 
     //const [formData, setFormData] = useState({})
 
@@ -38,6 +41,10 @@ function Patient() {
     function handleIdNumberChange(e){
      setIdNumber(e.target.value)
     }
+    
+    function componentDidMount() {
+      window.scrollTo(0, 0);
+  }
 
 
     function handleSubmit(e){
@@ -59,6 +66,8 @@ function Patient() {
         })
       .then((r) => r.json())
       .then((newPatient) => console.log(newPatient));
+        history.push('/patient-landing')
+        componentDidMount()
       
          }
 
@@ -131,7 +140,9 @@ return (
                 onChange={handlePasswordChange}
               />
           </label>
-      <button type="submit" >Submit</button>
+          <p>
+      <button type="submit" className="sub-btn" >Submit</button>
+      </p>
     </form>
   </div>
 )
