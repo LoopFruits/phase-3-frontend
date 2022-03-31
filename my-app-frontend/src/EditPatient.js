@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 
 function EditPatient({user}) {
+
   const [lastName, setLastName] = useState("")
   const [firstName, setFirstName] = useState("")
   const [email, setEmail] = useState("")

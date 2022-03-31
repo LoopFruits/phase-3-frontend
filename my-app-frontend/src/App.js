@@ -1,6 +1,6 @@
 import './App.css';
 import { Switch, Route, Link, useHistory} from "react-router-dom";
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import Patient from "./Patient";
 import Physician from "./Physician";
 import Login from "./Login";
@@ -13,9 +13,7 @@ import PhysicianLanding from "./PhysicianLanding";
 import EditPhysician from "./EditPhysician";
 
 function App() {
-  // const [isClick1, setIsClick1] = useState(false);
-  // const [isClick2, setIsClick2] = useState(false);
-  // const [isClick3, setIsClick3] = useState(false);
+    const [userLogin, setUserLogin] = useState("")
     const [user, setUser] = useState([])
     const [lastName, setLastName] = useState("")
     const [firstName, setFirstName] = useState("")
@@ -91,7 +89,6 @@ function App() {
       .then((newPatient) => setUser(newPatient));
         history.push('/patient-landing')
         componentDidMount()
-      
          }
 
          function handleSubmitPhysician(e){
@@ -114,23 +111,22 @@ function App() {
           .then((data) => setUser(data));
             history.push('/doc-landing')
             componentDidMount()
-          
              }
-         
 
+
+         function handleLoginChange(e){
+           setUserLogin(e.target.value)
+        }
+
+        
+        function handleLoginSubmit(e){
+          e.preventDefault();
+          fetch(`http://localhost:9292/patients/${userLogin}`)
+          .then((r) => r.json())
+          .then((data) => setUser(data));
+          history.push('/patient-landing')
+        }
   
-  // function patientForm() {
-  //   setIsClick1(!isClick1)
-  // }
-
-  // function physicianForm() {
-  //   setIsClick2(!isClick2)
-  // }
-
-  // function loginForm() {
-  //   setIsClick3(!isClick3)
-  // }
-
   return (
     <div className="App">
       <Switch>
@@ -163,10 +159,10 @@ function App() {
         </Route>
         </p>
         <Route exact path="/login">
-            <Login/>
+            <Login handleLoginChange={handleLoginChange} handleLoginSubmit={handleLoginSubmit} />
         </Route>
         <Route exact path="/patient-landing">
-          <PatientLanding/>
+          <PatientLanding user = {user}/>
         </Route>
         <Route exact path="/doc-landing">
           <PhysicianLanding/>

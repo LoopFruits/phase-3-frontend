@@ -1,14 +1,20 @@
-import React from "react";
+import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import Patient from "./Patient";
 
-function Login() {
+function Login({handleLoginChange, handleLoginSubmit}) {
+
+
+
+
 
 
     return(
         <div className="body-1">
         <h1>Login</h1>
-        <form>
+        <form onSubmit={handleLoginSubmit}>
           <div>
-            <input type="text" name="username" placeholder="Username" />
+            <input type="text" name="username"  onChange={handleLoginChange} placeholder="Username" />
           </div>
           <div>
             <input type="password" name="password" placeholder="Password" />

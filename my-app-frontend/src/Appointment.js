@@ -1,22 +1,24 @@
-// import React from 'react';
+import React from 'react';
 
 
 
-// function Appointment() {
+function Appointment({userAppointment}) {
+
+    console.log(userAppointment)
 
 
-// // return(
+return (
+    <ul className='appointment-card'>
+        <div className='details'>
+        <h2>Physician Name: {userAppointment.physician.first_name} {userAppointment.physician.last_name}</h2>
+        <h3>Appointment Date: {userAppointment.appt_date}</h3>
+        <div>
+            <button className="sub-btn">Cancel Appointment</button>
+        </div>
+        </div>
+    </ul>
+)
 
-// //     <div>
-// //         <h2>Name:{patient.name}</h2>
-// //         <h2>Physician Name:{physician.name}</h2>
-// //         <h3>Appointment Date:{appointment.date}</h3>
-// //         <div>
-// //             <button className="sub-btn">Cancel Appointment</button>
-// //         </div>
-// //     </div>
-// // )
+}
 
-// }
-
-// export default Appointment;
+export default Appointment;
