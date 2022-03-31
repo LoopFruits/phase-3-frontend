@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import Appointment from "./Appointment"
 
-function PatientLanding({user}) {
+function PatientLanding({user,handleAppSubmit}) {
 
 
     //console.log(user.id)
@@ -25,10 +25,10 @@ function PatientLanding({user}) {
         <div className="body-1">
             <h1>Welcome {user.first_name}</h1>
             <div>
-                <button className="sched-btn">Schedule Appointment</button>
+                <button className="sched-btn" onClick={handleAppSubmit}>Schedule Appointment</button>
             </div>
             <div>
-                <Link to="/edit-patient" ><button className="edit-btn">Edit Information</button></Link>
+                <Link to="/edit-patient" ><button className="edit-btn" >Edit Information</button></Link>
             </div>
             <div>
                 <h2>Upcoming Appointments</h2>

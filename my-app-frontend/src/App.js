@@ -126,6 +126,25 @@ function App() {
           .then((data) => setUser(data));
           history.push('/patient-landing')
         }
+
+        function handleAppSubmit(e){
+          e.preventDefault();
+          fetch("http://localhost:9292/appointments", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              patient_id:user.id,
+          
+              }),
+            })
+          .then((r) => r.json())
+          .then((newPatient) => console.log(newPatient));
+          console.log(user.id)
+            history.push('/patient-landing')
+            componentDidMount()
+             }
   
   return (
     <div className="App">
@@ -162,7 +181,7 @@ function App() {
             <Login handleLoginChange={handleLoginChange} handleLoginSubmit={handleLoginSubmit} />
         </Route>
         <Route exact path="/patient-landing">
-          <PatientLanding user = {user}/>
+          <PatientLanding user = {user} handleAppSubmit={handleAppSubmit}/>
         </Route>
         <Route exact path="/doc-landing">
           <PhysicianLanding/>
