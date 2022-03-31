@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 
 
-function EditPatient() {
+function EditPatient({user}) {
   const [lastName, setLastName] = useState("")
   const [firstName, setFirstName] = useState("")
   const [email, setEmail] = useState("")
@@ -38,9 +38,9 @@ function EditPatient() {
     window.scrollTo(0, 0);
    }
    
-    function handleSubmit(e,id) {
+    function handleSubmit(e) {
         e.preventDefault();
-        fetch(`http://localhost:9292/patients/${id}`, {
+        fetch(`http://localhost:9292/patients/${user.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -69,6 +69,7 @@ function EditPatient() {
                   <label>
                     <p>First Name</p>
                     <input
+                      placeholder={user.first_name}
                       type="text"
                       name="firstName"
                       value={firstName}
@@ -77,7 +78,8 @@ function EditPatient() {
                   </label>
                   <label>
                     <p>Last Name</p>
-                    <input 
+                    <input
+                        placeholder={user.last_name} 
                         type="text"
                         name="lastName"
                         value={lastName}
@@ -86,7 +88,8 @@ function EditPatient() {
                   </label>
                   <label>
                     <p>State ID</p>
-                    <input  
+                    <input
+                        placeholder={user.id_number}  
                         type="text"
                         name="idNumber"
                         value={idNumber}
@@ -95,7 +98,8 @@ function EditPatient() {
                   </label>
                   <label>
                     <p>E-mail</p>
-                      <input  
+                      <input
+                        placeholder={user.email}  
                         type="text"
                         name="email"
                         value={email}
@@ -104,7 +108,8 @@ function EditPatient() {
                     </label>
                     <label>
                       <p>Phone Number</p>
-                        <input  
+                        <input
+                          placeholder={user.phone}  
                           type="text"
                           name="phone"
                           value={phone}

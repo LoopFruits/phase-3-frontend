@@ -1,6 +1,6 @@
 import './App.css';
-import { Switch, Route, Link } from "react-router-dom";
-import React from "react";
+import { Switch, Route, Link, useHistory} from "react-router-dom";
+import React, { useState} from "react";
 import Patient from "./Patient";
 import Physician from "./Physician";
 import Login from "./Login";
@@ -14,7 +14,76 @@ function App() {
   // const [isClick1, setIsClick1] = useState(false);
   // const [isClick2, setIsClick2] = useState(false);
   // const [isClick3, setIsClick3] = useState(false);
-  
+    const [user, setUser] = useState([])
+    const [lastName, setLastName] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [email, setEmail] = useState("")
+    const [phone, setPhone] = useState("")
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [idNumber, setIdNumber] = useState("")
+
+    const history = useHistory();
+
+    //const [formData, setFormData] = useState({})
+
+    function handleFirstNameChange(e){
+     setFirstName(e.target.value)
+    }
+
+    function handleLastNameChange(e){
+     setLastName(e.target.value)
+    }
+
+    function handleEmailChange(e){
+     setEmail(e.target.value)
+    }
+
+    function handleUsernameChange(e){
+     setUsername(e.target.value)
+    }
+    function handlePhoneChange(e){
+     setPhone(e.target.value)
+    }
+
+    function handlePasswordChange(e){
+      setPassword(e.target.value)
+     }
+
+    function handleIdNumberChange(e){
+     setIdNumber(e.target.value)
+    }
+    
+    function componentDidMount() {
+      window.scrollTo(0, 0);
+  }
+
+
+    function handleSubmit(e){
+      e.preventDefault();
+      fetch("http://localhost:9292/patients", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          phone: phone,
+          username: username,
+          password: password,
+          id_number: idNumber
+          }),
+        })
+      .then((r) => r.json())
+      .then((newPatient) => setUser(newPatient));
+        history.push('/patient-landing')
+        componentDidMount()
+      
+         }
+         
+
   
   // function patientForm() {
   //   setIsClick1(!isClick1)
@@ -43,10 +112,13 @@ function App() {
             <Donate/>
         </Route>
         <Route exact path="/edit-patient">
-          <EditPatient/>
+          <EditPatient user={user}/>
         </Route>
         <Route exact path="/patient">
-            <Patient/>
+            <Patient lastName={lastName}firstName={firstName}email={email}phone={phone}username={username}password={password}idNumber={idNumber}
+            handleFirstNameChange={handleFirstNameChange}handleLastNameChange={handleLastNameChange}handleEmailChange={handleEmailChange}
+            handlePhoneChange={handlePhoneChange}handleUsernameChange={handleUsernameChange}handlePasswordChange={handlePasswordChange}handleIdNumberChange={handleIdNumberChange}
+            handleSubmit={handleSubmit}/>
         </Route>
         <Route exact path="/physician">
             <Physician/>
