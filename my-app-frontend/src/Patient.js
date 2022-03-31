@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 function Patient({lastName,firstName,email,phone,username,password,idNumber,
 handleFirstNameChange,handleLastNameChange,handleEmailChange,handleIdNumberChange,

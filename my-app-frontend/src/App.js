@@ -9,6 +9,8 @@ import Donate from "./Donate";
 // import CreatePhysicianLog from "./CreatePhysicianLog";
 import EditPatient from "./EditPatient"
 import PatientLanding from "./PatientLanding";
+import PhysicianLanding from "./PhysicianLanding";
+import EditPhysician from "./EditPhysician";
 
 function App() {
   // const [isClick1, setIsClick1] = useState(false);
@@ -22,6 +24,8 @@ function App() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [idNumber, setIdNumber] = useState("")
+    const [country, setCountry] = useState("")
+    const [license, setLicense] = useState("")
 
     const history = useHistory();
 
@@ -37,6 +41,13 @@ function App() {
 
     function handleEmailChange(e){
      setEmail(e.target.value)
+    }
+    function handleCountry(e) {
+      setCountry(e.target.value)
+    }
+
+    function handleLicense(e) {
+      setLicense(e.target.value)
     }
 
     function handleUsernameChange(e){
@@ -82,6 +93,29 @@ function App() {
         componentDidMount()
       
          }
+
+         function handleSubmitPhysician(e){
+          e.preventDefault();
+          fetch("http://localhost:9292/physicians", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              first_name: firstName,
+              last_name: lastName,
+              country: country,
+              license_number: license,
+              username: username,
+              password: password,
+              }),
+            })
+          .then((r) => r.json())
+          .then((data) => setUser(data));
+            history.push('/doc-landing')
+            componentDidMount()
+          
+             }
          
 
   
@@ -114,6 +148,9 @@ function App() {
         <Route exact path="/edit-patient">
           <EditPatient user={user}/>
         </Route>
+        <Route exact path="/edit-physician">
+          <EditPhysician user={user}/>
+        </Route>
         <Route exact path="/patient">
             <Patient lastName={lastName}firstName={firstName}email={email}phone={phone}username={username}password={password}idNumber={idNumber}
             handleFirstNameChange={handleFirstNameChange}handleLastNameChange={handleLastNameChange}handleEmailChange={handleEmailChange}
@@ -121,14 +158,18 @@ function App() {
             handleSubmit={handleSubmit}/>
         </Route>
         <Route exact path="/physician">
-            <Physician/>
+            <Physician handleCountry={handleCountry} handleLicense={handleLicense} handleFirstNameChange={handleFirstNameChange} handleLastNameChange={handleLastNameChange}
+            handleUsernameChange={handleUsernameChange} handlePasswordChange={handlePasswordChange}handleSubmitPhysician={handleSubmitPhysician}/>
         </Route>
         </p>
-        <Route path="/login">
+        <Route exact path="/login">
             <Login/>
         </Route>
-        <Route path="/patient-landing">
+        <Route exact path="/patient-landing">
           <PatientLanding/>
+        </Route>
+        <Route exact path="/doc-landing">
+          <PhysicianLanding/>
         </Route>
       </header>
       </Switch>

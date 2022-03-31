@@ -1,57 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function Physician() {
+function Physician({handleFirstNameChange,handleLastNameChange,handleUsernameChange,
+handlePasswordChange,handleCountry,handleLicense,license,username,password,country,firstName,lastName,handleSubmitPhysician}) {
     
-      const [lastName, setLastName] = useState("")
-      const [firstName, setFirstName] = useState("")
-      const [country, setCountry] = useState("")
-      const [licenseNumber, setLicenseNumber] = useState("")
-      const [username, setUsername] = useState("")
-      const [password, setPassword] = useState("")
+    //   const [lastName, setLastName] = useState("")
+    //   const [firstName, setFirstName] = useState("")
+    //   const [country, setCountry] = useState("")
+    //   const [licenseNumber, setLicenseNumber] = useState("")
+    //   const [username, setUsername] = useState("")
+    //   const [password, setPassword] = useState("")
     
-      function handleFirstNameChange(e){
-        setFirstName(e.target.value)
-      }
+    //   function handleFirstNameChange(e){
+    //     setFirstName(e.target.value)
+    //   }
     
-      function handleLastNameChange(e){
-        setLastName(e.target.value)
-      }
+    //   function handleLastNameChange(e){
+    //     setLastName(e.target.value)
+    //   }
     
-      function handleCountryChange(e){
-        setCountry(e.target.value)
-      }
+    //   function handleCountryChange(e){
+    //     setCountry(e.target.value)
+    //   }
     
-      function handleLicenseChange(e){
-        setLicenseNumber(e.target.value)
-      }
+    //   function handleLicenseChange(e){
+    //     setLicenseNumber(e.target.value)
+    //   }
     
-      function handleUsernameChange(e){
-        setUsername(e.target.value)
-      }
+    //   function handleUsernameChange(e){
+    //     setUsername(e.target.value)
+    //   }
   
-    function handlePasswordChange(e){
-      setPassword(e.target.value)
-    }
-      function handleSubmit(e){
-        e.preventDefault();
-        fetch("http://localhost:9292/physicians", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            first_name: firstName,
-            last_name: lastName,
-            country: country,
-            license_number: licenseNumber,
-            username: username,
-            password: password,
-          }),
-        })
-          .then((r) => r.json())
-          .then((newPhysician) => console.log(newPhysician));
+    // function handlePasswordChange(e){
+    //   setPassword(e.target.value)
+    // }
+    //   function handleSubmit(e){
+    //     e.preventDefault();
+    //     fetch("http://localhost:9292/physicians", {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({
+    //         first_name: firstName,
+    //         last_name: lastName,
+    //         country: country,
+    //         license_number: licenseNumber,
+    //         username: username,
+    //         password: password,
+    //       }),
+    //     })
+    //       .then((r) => r.json())
+    //       .then((newPhysician) => console.log(newPhysician));
     
-      }
+    //   }
   
   
   
@@ -61,7 +62,7 @@ function Physician() {
       
       <div className="body-1">
         <h1>Physician Sign-up</h1>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmitPhysician}>
             <label>
             <p>First Name</p>
               <input
@@ -84,15 +85,15 @@ function Physician() {
                 type="text" 
                 name="country"
                 value={country}
-                onChange={handleCountryChange} />
+                onChange={handleCountry} />
             </label>
             <label>
             <p>Medical License</p>
               <input 
                 type="text"
                 name="licenseNumber"
-                value={licenseNumber}
-                onChange={handleLicenseChange} />
+                value={license}
+                onChange={handleLicense} />
             </label>
             <label>
             <p>User Name</p>
