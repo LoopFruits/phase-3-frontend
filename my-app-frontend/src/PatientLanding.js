@@ -37,9 +37,9 @@ function PatientLanding({user,handleAppSubmit, onDeleteAppointment}) {
             <div>
                 <Link to="/edit-patient" ><button className="edit-btn" >Edit Information</button></Link>
             </div>
-            <div>
-                <h2>Upcoming Appointments</h2>
-                {userAppointmentsList}
+            <div className="appointments">
+                <h2 className="appointment-header" >Upcoming Appointments</h2>
+                <span>{userAppointmentsList}</span>
                {/* {userAppointments.map(appointment => <ul className="appointments"> Appointment Date: {appointment.appt_date}<br></br> Physician: {appointment.physician.first_name} {appointment.physician.last_name}</ul>)} */}
             </div>
         </div>
