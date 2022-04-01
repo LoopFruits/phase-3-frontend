@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import Appointment from "./Appointment"
 
-function PatientLanding({user,handleAppSubmit}) {
+function PatientLanding({user,handleAppSubmit, onDeleteAppointment}) {
 
 
     //console.log(user.id)
@@ -18,8 +18,15 @@ function PatientLanding({user,handleAppSubmit}) {
        const userAppointments = appointments.filter(appointment => appointment.patient_id === user.id)
        console.log(userAppointments)
        const userAppointmentsList = userAppointments.map((userAppointment) => (
-            <Appointment key={userAppointment.id} userAppointment={userAppointment}/>
+            <Appointment key={userAppointment.id} userAppointment={userAppointment} onDeleteAppointment={onDeleteAppointment}></Appointment> 
        ))
+
+       
+
+        function onDeleteAppointment(deletedAppointment){
+         const updatedAppointments = userAppointmentsList.filter((appointment)=>appointment.id !== deletedAppointment)
+         setAppointments(updatedAppointments)
+    }
 
     return (
         <div className="body-1">

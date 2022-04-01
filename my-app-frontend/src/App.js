@@ -24,7 +24,6 @@ function App() {
     const [idNumber, setIdNumber] = useState("")
     const [country, setCountry] = useState("")
     const [license, setLicense] = useState("")
-
     const history = useHistory();
 
     //const [formData, setFormData] = useState({})
@@ -140,7 +139,7 @@ function App() {
               }),
             })
           .then((r) => r.json())
-          .then((newPatient) => console.log(newPatient));
+          .then((newAppointment) => console.log(newAppointment));
           console.log(user.id)
             history.push('/patient-landing')
             componentDidMount()
