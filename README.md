@@ -17,5 +17,6 @@ Taking the humanitarian effort to the next level by connecting refugees in need 
 
 # Setup
 # Features
-# Contact
 
+# Contact
+Kenneththedev@gmail.com
