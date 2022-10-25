@@ -4,9 +4,9 @@ Mental Health Without Borders (FrontEnd)
 =====================
 
   * [General Info](#general-info)
-  * [Project Demo](#project-demo)
+  * [Code Snippet](#code-snippet)
   * [Technologies](#technologies)
-  * [Front End](#front-end)
+
   
 
 
@@ -17,19 +17,13 @@ Mental Health Without Borders (FrontEnd)
 
 Taking the humanitarian effort to the next level by connecting refugees in need to licensed professionals
 
-## Project Demo
+## Code Snippet
+[FrontEnd Code](assets/frontend-code.png)
 
 ## Technologies
 - React 
 
 
-## Front End
-- React 17.0.2
-- React Router Dom 5.3.0
-    
-
-## Setup
-## Features
 
 ## Contact
 Kenneththedev@gmail.com
